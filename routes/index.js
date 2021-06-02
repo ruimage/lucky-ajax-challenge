@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-const Die = require('../models/die');
+const Die = require('../db/models/die');
 
 
 /* GET home page. */
