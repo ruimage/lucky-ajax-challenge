@@ -7,7 +7,6 @@ const indexRouter = require('./routes/index');
 const app = express();
 const PORT = 3000;
 
-// Тут должно быть подключение к БД (загляни в './db/connect')
 
 
 // view engine setup
