@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', event => {
+document.addEventListener('DOMContentLoaded', (event) => {
 
   // PSEUDO-код:
   // 1 - перехватить событие отправки формы
