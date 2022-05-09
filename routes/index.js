@@ -1,17 +1,27 @@
 const express = require('express');
+const ReactDOMServer = require('react-dom/server');
+const React = require('react');
+
+const Home = require('../views/Home');
 
 const router = express.Router();
 const Die = require('../db/models/die');
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  res.render('Main');
+  const home = React.createElement(Home);
+  const html = ReactDOMServer.renderToStaticMarkup(home);
+  res.write('<!DOCTYPE html>');
+  res.end(html);
 });
 
 // TODO: изменить данный маршрутизатор с использованием AJAX
 router.post('/rolls', (req, res) => {
   const die = new Die(Number(req.body.sides));
-  res.render('Main', { die, roll: die.roll() });
+  const home = React.createElement(Home, { die, roll: die.roll() });
+  const html = ReactDOMServer.renderToStaticMarkup(home);
+  res.write('<!DOCTYPE html>');
+  res.end(html);
 });
 
 module.exports = router;
