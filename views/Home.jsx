@@ -1,9 +1,9 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function Home({ die, roll }) {
+module.exports = function Home({ title, die, roll }) {
   return (
-    <Layout title="Page title">
+    <Layout title={title}>
       <div className="container">
         <h1>Simplest Possible AJAX</h1>
         <p>This contrived app will simulate a roll of a n-sided die.</p>
@@ -12,7 +12,7 @@ module.exports = function Home({ die, roll }) {
           <p>
             <label htmlFor="sides">
               How many sides?
-              <input id="sides" name="sides" type="number" placeholder="optional - default=6" value="{{sides}}" />
+              <input id="sides" name="sides" type="number" placeholder="optional - default=6" />
             </label>
           </p>
           <p><input type="submit" value="Roll the Die" /></p>

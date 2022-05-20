@@ -9,7 +9,7 @@ const Die = require('../db/models/die');
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  const home = React.createElement(Home);
+  const home = React.createElement(Home, req.app.locals);
   const html = ReactDOMServer.renderToStaticMarkup(home);
   res.write('<!DOCTYPE html>');
   res.end(html);
@@ -18,7 +18,12 @@ router.get('/', (req, res) => {
 // TODO: изменить данный маршрутизатор с использованием AJAX
 router.post('/rolls', (req, res) => {
   const die = new Die(Number(req.body.sides));
-  const home = React.createElement(Home, { die, roll: die.roll() });
+
+  const home = React.createElement(Home, {
+    ...req.app.locals,
+    die,
+    roll: die.roll(),
+  });
   const html = ReactDOMServer.renderToStaticMarkup(home);
   res.write('<!DOCTYPE html>');
   res.end(html);
