@@ -3,6 +3,7 @@ const ReactDOMServer = require('react-dom/server');
 const React = require('react');
 
 const Home = require('../views/Home');
+const DieView = require('../views/Die');
 
 const router = express.Router();
 const Die = require('../db/models/die');
@@ -19,8 +20,7 @@ router.get('/', (req, res) => {
 router.post('/rolls', (req, res) => {
   const die = new Die(Number(req.body.sides));
 
-  const home = React.createElement(Home, {
-    ...req.app.locals,
+  const home = React.createElement(DieView, {
     die,
     roll: die.roll(),
   });
