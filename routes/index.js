@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 
 // TODO: изменить данный маршрутизатор с использованием AJAX
 router.post('/', (req, res) => {
-  const die = new Die(Number(req.body.sides));
+  const die = new Die(Number(req.body.dice));
 
   const home = React.createElement(DieView, {
     die,
