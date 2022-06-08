@@ -10,10 +10,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 document.querySelector('#dice-form').addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const form = evt.target;
-  await fetch('/rolls', {
+  const htmlDie = await fetch('/rolls', {
     method: 'POST',
     body: {
       dice: form.number.value,
     },
   });
+  const diePlace = document.querySelector('#die-container');
+  diePlace.remove();
+
+  const dieContainer = document.querySelector('#die-container');
 });
